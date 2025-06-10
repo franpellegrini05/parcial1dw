@@ -1,0 +1,28 @@
+.redondeada {
+  border-radius: 10px;
+}
+.borde {
+  border: 2px solid #000;
+}
+.borde-azul {
+  border: 2px solid #0000FF;
+}
+.borde-rojo {
+  border: 2px solid #FF0000;
+}
+.borde-verde {
+  border: 2px solid #00FF00;
+}
+.borde-gris {
+  border: 2px solid #808080;
+}
+.borde-negro {
+  border: 2px solid #000000;
+}
+
+.circular{
+    width: 160px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}

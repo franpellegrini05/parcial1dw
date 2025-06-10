@@ -3,65 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inicio - Francesco Pellegrini</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Poppins', sans-serif; }</style>
-</head>
-<body class="bg-gray-100 text-gray-900">
-  <header class="bg-gray-800 text-white sticky top-0 z-50 shadow">
-    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-xl font-semibold">PARCIAL 1</h1>
-      <ul class="flex gap-6">
-        <li><a href="index.html" class="hover:text-blue-400">Inicio</a></li>
-        <li><a href="avisos.html" class="hover:text-blue-400">Avisos</a></li>
-        <li><a href="sobremi.html" class="hover:text-blue-400">Sobre mí</a></li>
-        <li><a href="materias2025.html" class="hover:text-blue-400">Materias 2025</a></li>
-        <li><a href="contacto.html" class="hover:text-blue-400">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+  <title>UADE - Mi Cursada</title>
+  <link rel="stylesheet" href="styles.css" />
 
-  <main class="container mx-auto py-10 px-6">
-    <h2 class="text-3xl font-semibold mb-6 text-blue-700">Materias del Cuatrimestre</h2>
-    <div class="overflow-x-auto">
-      <table class="w-full bg-white shadow-md rounded-lg overflow-hidden">
-        <thead class="bg-blue-700 text-white">
+  <!-- Tailwind CSS + Configuración -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Estilos Globales -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+
+  <!-- Modo Oscuro Automático y Guardado en localStorage -->
+  <script>
+    function aplicarTema() {
+      const temaGuardado = localStorage.getItem('theme');
+      const sistemaPrefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (temaGuardado) {
+        document.documentElement.classList.toggle('dark', temaGuardado === 'dark');
+      } else {
+        document.documentElement.classList.toggle('dark', sistemaPrefiereOscuro);
+      }
+    }
+    aplicarTema();
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (!localStorage.getItem('theme')) {
+        aplicarTema();
+      }
+    });
+  </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+
+  <header class="p-4 bg-gray-100 dark:bg-gray-900 shadow-md w-full flex items-center justify-between">
+  <h1 class="text-2xl font-semibold">Mi Cursada - UADE</h1>
+  <nav class="flex flex-wrap gap-4 text-blue-600 dark:text-blue-400">
+    <a href="index.html">Home</a>
+    <a href="avisos.html">Avisos</a>
+    <a href="sobremi.html">Sobre mí</a>
+    <a href="materias.html">Materias</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+  <main class="flex-1 flex flex-col items-center justify-center p-6 mb-8 w-full">
+    <div class="w-full max-w-3xl">
+      <h2 class="text-xl font-semibold mb-4">Horario de Clases</h2>
+      <table class="w-full border border-gray-300 dark:border-gray-700 text-left">
+        <thead class="bg-gray-200 dark:bg-gray-700">
           <tr>
-            <th class="py-3 px-6 text-left">Materia</th>
-            <th class="py-3 px-6 text-left">Día y Horario</th>
-            <th class="py-3 px-6 text-left">Modalidad</th>
+            <th class="p-2 border">Materia</th>
+            <th class="p-2 border">Día</th>
+            <th class="p-2 border">Horario</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b">
-            <td class="py-3 px-6">Arquitectura de Computadores</td>
-            <td class="py-3 px-6">Lunes a Viernes 18:30 - 20:30</td>
-            <td class="py-3 px-6">Virtual</td>
+          <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
+            <td class="p-2 border">Arquitectura de Computadores</td>
+            <td class="p-2 border">Lunes</td>
+            <td class="p-2 border">18:30 - 22:00</td>
           </tr>
-          <tr class="border-b">
-            <td class="py-3 px-6">Sistema de Información</td>
-            <td class="py-3 px-6">Lunes a Viernes 18:30 - 20:30</td>
-            <td class="py-3 px-6">Virtual</td>
+          <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
+            <td class="p-2 border">Sistemas de Información I</td>
+            <td class="p-2 border">Martes</td>
+            <td class="p-2 border">18:30 - 22:00</td>
           </tr>
-          <tr class="border-b">
-            <td class="py-3 px-6">Introducción a la Algoritmia</td>
-            <td class="py-3 px-6">Lunes a Viernes 18:30 - 20:30</td>
-            <td class="py-3 px-6">Virtual</td>
+          <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
+            <td class="p-2 border">Introducción a la Algoritmia</td>
+            <td class="p-2 border">Miércoles</td>
+            <td class="p-2 border">18:30 - 22:00</td>
           </tr>
-          <tr class="border-b">
-            <td class="py-3 px-6">Marketing</td>
-            <td class="py-3 px-6">Lunes a Viernes 18:30 - 20:30</td>
-            <td class="py-3 px-6">Virtual</td>
+          <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
+            <td class="p-2 border">Marketing</td>
+            <td class="p-2 border">Jueves</td>
+            <td class="p-2 border">18:30 - 22:00</td>
           </tr>
-          <tr>
-            <td class="py-3 px-6">Diseño y Desarrollo Web</td>
-            <td class="py-3 px-6">Lunes a Viernes 18:30 - 20:30</td>
-            <td class="py-3 px-6">Virtual</td>
+          <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
+            <td class="p-2 border">Diseño y Desarrollo Web</td>
+            <td class="p-2 border">Viernes</td>
+            <td class="p-2 border">18:30 - 22:00</td>
           </tr>
         </tbody>
       </table>
     </div>
   </main>
+
+  <footer class="bg-gray-200 dark:bg-gray-800 text-center p-6 mt-auto w-full">
+    <button id="toggleTheme" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+      Cambiar aspecto
+    </button>
+    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
+      Tema actual: <span id="modoActual">Cargando...</span>
+    </p>
+    <p class="mt-4 text-xs text-gray-600 dark:text-gray-400">&copy; 2025 - Copyright - Francesco Pellegrini.</p>
+  </footer>
+
+  <!-- Script para botón de cambio de tema -->
+  <script>
+    const html = document.documentElement;
+    const boton = document.getElementById('toggleTheme');
+    const modoTexto = document.getElementById('modoActual');
+
+    function actualizarTexto() {
+      const tema = html.classList.contains('dark') ? 'Oscuro' : 'Claro';
+      modoTexto.textContent = tema;
+    }
+
+    boton.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const nuevoTema = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', nuevoTema);
+      actualizarTexto();
+    });
+
+    actualizarTexto(); // Mostrar el texto al cargar la página
+  </script>
 </body>
 </html>
